@@ -8,7 +8,7 @@ export const getAllUsers = async () => {
 
 // function that finds a user by email
 export const getUser = async (email) => {
-  const user = await user.findOne({
+  const user = await User.findOne({
     email,
   });
 };

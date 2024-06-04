@@ -1,5 +1,5 @@
-import { getUser } from "../services/user.service.js";
-import { encryptPassword } from "../utils/user.util.js";
+import { createUser, getUser } from "../services/user.service.js";
+import { hashPassword } from "../utils/user.util.js";
 
 /**
  * Controller to create a new user
@@ -8,13 +8,15 @@ import { encryptPassword } from "../utils/user.util.js";
  * @param {Function} next
  */
 
-export const createUser = async (req, res) => {
+export const createUserRequest = async (req, res) => {
   try {
-    console.log(req);
+    console.log(req.body.email);
     let userExist = await getUser(req.body.email);
     if (!userExist) {
-      const encryptedDataPassword = encryptPassword(req.body);
+      const encryptedDataPassword = await hashPassword(req.body);
+
       const data = await createUser(encryptedDataPassword);
+      console.log(data);
       return res.status(200).json({
         data,
         status: 200,
@@ -27,5 +29,6 @@ export const createUser = async (req, res) => {
     });
   } catch (error) {
     console.log("too bad", error);
+    res.status(400).json(error);
   }
 };

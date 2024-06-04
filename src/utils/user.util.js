@@ -1,10 +1,10 @@
-import { encrypt, verify } from "unixcrypt";
+import { hash, verify } from "argon2";
 import jwt from "jsonwebtoken";
 
-export const encryptPassword = async (body) => {
+export const hashPassword = async (body) => {
   let data = {
     ...body,
-    password: await encrypt(body.password, 10),
+    password: await hash(body.password, 10),
   };
   return data;
 };

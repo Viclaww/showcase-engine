@@ -6,8 +6,8 @@ import { notFound } from "./middlewares/errorMiddleware.js";
 dotenv.config();
 const app = express();
 
-// app.use(express.json);
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 database();
 // app.use(notFound());
 
