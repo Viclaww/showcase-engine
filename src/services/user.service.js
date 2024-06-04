@@ -11,6 +11,7 @@ export const getUser = async (email) => {
   const user = await User.findOne({
     email,
   });
+  return user;
 };
 
 // function that creates a user
