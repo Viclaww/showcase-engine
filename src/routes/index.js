@@ -4,6 +4,7 @@ const router = express.Router();
 
 const routes = () => {
   router.get("/", (req, res) => {
+    console.log("mee");
     res.json("Welcome");
   });
   router.use("/auth", authRouter);

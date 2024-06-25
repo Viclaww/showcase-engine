@@ -13,7 +13,7 @@ export const userAuth = async (req, res, next) => {
   const JWT_SECRET = process.env.JWT_SECRET;
   try {
     let bearerToken = req.header("Authorization").split(" ")[1].trim();
-    console.log(bearerToken);
+
     if (!bearerToken) {
       throw {
         code: HttpStatus.BAD_REQUEST,
