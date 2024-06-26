@@ -14,15 +14,13 @@ import {
 
 export const createUserRequest = async (req, res) => {
   try {
-    
     // check if user Exist
     console.log("this is us");
     let userExist = await getUser(req.body.email);
     if (!userExist) {
-
       const encryptedDataPassword = await hashPassword(req.body); // Encrypt password
       const user = await createUser(encryptedDataPassword); // create a new user mongoDb
-      const token = signToken(data); // create jwt token
+      const token = await signToken(user); // create jwt token
 
       // return successful data
       return res.status(200).json({

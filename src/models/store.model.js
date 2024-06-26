@@ -6,7 +6,10 @@ const StoreModel = new Schema(
       type: String,
       required: true,
     },
-    image: {
+    logo: {
+      type: String,
+    },
+    coverImage: {
       type: String,
     },
     description: {
@@ -15,6 +18,7 @@ const StoreModel = new Schema(
     },
     products: [
       {
+        id: String,
         tag: Array,
         price: Number,
         name: String,

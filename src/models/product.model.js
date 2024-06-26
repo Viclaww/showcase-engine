@@ -6,8 +6,14 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
     },
+    storeId: {
+      type: String,
+    },
     description: {
       type: String,
+    },
+    price: {
+      type: Number,
     },
     images: [
       {
